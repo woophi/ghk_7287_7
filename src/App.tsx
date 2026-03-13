@@ -25,9 +25,6 @@ export const App = () => {
     }
   }, [stocks]);
 
-  const getAnswerButtonClassName = (option: PredictionOption) =>
-    option === selectedOption ? `${appSt.answerButton} ${appSt.answerButtonSelected}` : appSt.answerButton;
-
   if (selectedOption === 'no') {
     return (
       <div className={appSt.container}>
@@ -144,87 +141,50 @@ export const App = () => {
   }
 
   return (
-    <div className={appSt.page}>
-      <div className={appSt.phoneFrame}>
-        <div className={appSt.hero}>
-          <div className={appSt.heroContent}>
-            <span className={appSt.analyticsBadge}>АНАЛИТИКА</span>
+    <>
+      <div className={appSt.page}>
+        <section className={appSt.questionScreen}>
+          <Typography.TitleResponsive
+            tag="h1"
+            view="xlarge"
+            font="system"
+            weight="semibold"
+            color="primary"
+            style={{
+              textAlign: 'center',
+            }}
+          >
+            {stocks?.question}
+          </Typography.TitleResponsive>
+        </section>
+      </div>
+      <div className={appSt.bottomBtn}>
+        <div className={appSt.answerRow}>
+          <Button
+            block
+            view="secondary"
+            className={`${appSt.answerButton} ${appSt.answerButtonNo}`}
+            onClick={() => {
+              window.gtag('event', '7287_answer_click', { var: 'var2', answer: 'no', question: stocks?.id ?? '' });
+              setSelectedOption('no');
+            }}
+          >
+            Нет
+          </Button>
 
-            <Typography.TitleResponsive
-              tag="h1"
-              view="medium"
-              font="system"
-              weight="semibold"
-              color="primary-inverted"
-              style={{
-                margin: '12px 0 8px',
-              }}
-            >
-              Ваш прогноз
-              <br />
-              на развитие события
-            </Typography.TitleResponsive>
-
-            <Typography.Text tag="p" view="primary-medium" defaultMargins={false} color="primary-inverted">
-              Покажем активы под выбранный вариант
-            </Typography.Text>
-          </div>
-        </div>
-
-        <div className={appSt.content}>
-          <section className={appSt.questionCard}>
-            <Typography.Text
-              tag="div"
-              view="primary-medium"
-              style={{
-                color: 'rgba(3, 3, 6, 0.88)',
-                fontSize: '22px',
-                lineHeight: '26px',
-                fontWeight: 700,
-              }}
-            >
-              {stocks?.question}
-            </Typography.Text>
-
-            <div>
-              <div className={appSt.answerRow}>
-                <Button
-                  block
-                  view="secondary"
-                  className={getAnswerButtonClassName('yes')}
-                  onClick={() => {
-                    window.gtag('event', '7287_answer_click', { var: 'var2', answer: 'yes', question: stocks?.id ?? '' });
-                    setSelectedOption('yes');
-                  }}
-                >
-                  Да
-                </Button>
-
-                <Button
-                  block
-                  view="secondary"
-                  className={getAnswerButtonClassName('no')}
-                  onClick={() => {
-                    window.gtag('event', '7287_answer_click', { var: 'var2', answer: 'no', question: stocks?.id ?? '' });
-                    setSelectedOption('no');
-                  }}
-                >
-                  Нет
-                </Button>
-              </div>
-              <Typography.Text
-                tag="p"
-                view="primary-small"
-                defaultMargins={false}
-                className={appSt.questionHint}
-                color="secondary"
-              >
-                Выбор влияет на подбор активов ниже
-              </Typography.Text>
-            </div>
-          </section>
+          <Button
+            block
+            view="secondary"
+            className={`${appSt.answerButton} ${appSt.answerButtonYes}`}
+            onClick={() => {
+              window.gtag('event', '7287_answer_click', { var: 'var2', answer: 'yes', question: stocks?.id ?? '' });
+              setSelectedOption('yes');
+            }}
+          >
+            Да
+          </Button>
         </div>
       </div>
-    </div>
+    </>
   );
 };

@@ -5,74 +5,47 @@ const page = style({
   width: '100%',
   display: 'flex',
   justifyContent: 'center',
+  padding: '0 16px',
+  '@media': {
+    'screen and (max-width: 420px)': {
+      padding: 0,
+    },
+  },
 });
 
-const phoneFrame = style({
-  width: '100%',
-  backgroundColor: '#f2f3f5',
-  overflow: 'hidden',
-  position: 'relative',
-});
-
-const hero = style({
-  backgroundColor: '#3193FC',
-  paddingBottom: '52px',
-});
-
-const backButton = style({
-  width: '44px',
-  height: '44px',
-  marginLeft: '6px',
-  padding: 0,
-  border: 0,
+const questionScreen = style({
+  flex: 1,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  background: 'transparent',
-  color: 'rgba(255, 255, 255, 0.94)',
-  cursor: 'pointer',
+  padding: '1rem 24px',
+  position: 'relative',
+  marginTop: '-74px',
+  zIndex: 2,
 });
 
-globalStyle(`${backButton} svg`, {
-  width: '24px',
-  height: '24px',
-});
-
-const heroContent = style({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  padding: '24px 16px 0 20px',
-});
-
-const analyticsBadge = style({
-  padding: '4px 8px',
-  borderRadius: '8px',
-  backgroundColor: 'rgba(238, 238, 251, 0.55)',
-  color: 'rgba(255, 255, 255, 0.94)',
-  fontSize: '11px',
-  lineHeight: '16px',
+const questionText = style({
+  textAlign: 'center',
+  color: '#25262b',
+  fontSize: '54px',
+  lineHeight: 1.02,
   fontWeight: 700,
-  letterSpacing: '1.25px',
-  marginTop: '1rem',
+  letterSpacing: '-0.025em',
+  maxWidth: '100%',
+  textWrap: 'balance',
+  wordBreak: 'break-word',
+  '@media': {
+    'screen and (max-width: 420px)': {
+      fontSize: '48px',
+    },
+  },
 });
 
-const content = style({
-  display: 'flex',
-  justifyContent: 'center',
-  padding: '0 16px 24px',
-});
-
-const questionCard = style({
+const answerPanel = style({
   width: '100%',
-  marginTop: '-36px',
-  borderRadius: '16px',
-  backgroundColor: 'rgba(255, 255, 255, 0.94)',
-  boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-  padding: '20px 16px',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '32px',
+  padding: '12px 16px 22px',
+  position: 'relative',
+  zIndex: 2,
 });
 
 const answerRow = style({
@@ -81,33 +54,23 @@ const answerRow = style({
 });
 
 const answerButton = style({
-  minHeight: '56px',
+  minHeight: '50px',
   borderRadius: '16px',
-  border: 0,
+  border: '1px solid transparent',
   boxShadow: 'none',
-  backgroundColor: '#f2f3f5',
-  color: 'rgba(3, 3, 6, 0.88)',
-  fontSize: '16px',
-  lineHeight: '24px',
-  fontWeight: 500,
+  padding: '4px 12px 6px',
 });
 
-const answerButtonSelected = style({
-  backgroundColor: '#e9ecf0',
+const answerButtonNo = style({
+  backgroundColor: 'rgba(255, 87, 84, 0.16)',
+  color: '#ff4339',
+  borderColor: '#ff5b55',
 });
 
-const questionHint = style({
-  width: '100%',
-  textAlign: 'center',
-  marginTop: '12px',
-});
-
-const bottomBtn = style({
-  position: 'fixed',
-  zIndex: 2,
-  width: '100%',
-  padding: '12px',
-  bottom: 0,
+const answerButtonYes = style({
+  backgroundColor: 'rgba(111, 185, 126, 0.3)',
+  color: '#159442',
+  borderColor: '#2f9c4d',
 });
 
 const container = style({
@@ -126,19 +89,28 @@ const box = style({
   backgroundColor: '#F3F4F5',
 });
 
+globalStyle(`${answerButton}:active`, {
+  transform: 'scale(0.99)',
+});
+
+const bottomBtn = style({
+  position: 'fixed',
+  zIndex: 2,
+  width: '100%',
+  padding: '12px',
+  bottom: 0,
+});
+
 export const appSt = {
   page,
-  phoneFrame,
-  hero,
-  heroContent,
-  analyticsBadge,
-  content,
-  questionCard,
+  questionScreen,
+  questionText,
+  answerPanel,
   answerRow,
   answerButton,
-  answerButtonSelected,
-  questionHint,
-  bottomBtn,
+  answerButtonNo,
+  answerButtonYes,
   container,
   box,
+  bottomBtn,
 };
