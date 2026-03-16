@@ -21,7 +21,7 @@ export const App = () => {
 
   useEffect(() => {
     if (stocks?.question) {
-      window.gtag('event', '7287_question_impression', { var: 'var2', question: stocks.id });
+      window.gtag('event', '7287_question_impression', { var: 'var7', question: stocks.id });
     }
   }, [stocks]);
 
@@ -47,7 +47,7 @@ export const App = () => {
             <PureCell
               onClick={() => {
                 window.gtag('event', '7287_choose_security', {
-                  var: 'var2',
+                  var: 'var7',
                   security_ticker: stock.ticker,
                   answer: 'no',
                   question: stocks?.id ?? '',
@@ -104,7 +104,7 @@ export const App = () => {
             <PureCell
               onClick={() => {
                 window.gtag('event', '7287_choose_security', {
-                  var: 'var2',
+                  var: 'var7',
                   security_ticker: stock.ticker,
                   answer: 'yes',
                   question: stocks?.id ?? '',
@@ -165,7 +165,7 @@ export const App = () => {
             view="secondary"
             className={`${appSt.answerButton} ${appSt.answerButtonNo}`}
             onClick={() => {
-              window.gtag('event', '7287_answer_click', { var: 'var2', answer: 'no', question: stocks?.id ?? '' });
+              window.gtag('event', '7287_answer_click', { var: 'var7', answer: 'no', question: stocks?.id ?? '' });
               setSelectedOption('no');
             }}
           >
@@ -177,7 +177,7 @@ export const App = () => {
             view="secondary"
             className={`${appSt.answerButton} ${appSt.answerButtonYes}`}
             onClick={() => {
-              window.gtag('event', '7287_answer_click', { var: 'var2', answer: 'yes', question: stocks?.id ?? '' });
+              window.gtag('event', '7287_answer_click', { var: 'var7', answer: 'yes', question: stocks?.id ?? '' });
               setSelectedOption('yes');
             }}
           >
